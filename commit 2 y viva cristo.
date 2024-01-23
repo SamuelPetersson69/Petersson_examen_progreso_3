@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+// Definición del struct alumno
+struct alumno {
+    int matricula;
+    char nombre[50];
+    char direccion[50];
+    char carrera[50];
+    float nota;
+};
+
+// Función para ingresar datos de un alumno en el archivo plano segun yo ahora a ver si la cague, simplemente meti una funcion y un monton de scanf y printf de toda la vida y ya explico lo demas 
+//por cierto los datos se guardan en char pero ya nada.
+void ingresarAlumno(struct alumno *al) {
+    printf("Ingrese la matricula del alumno: ");
+    scanf("%d", &al->matricula);
+
+    printf("Ingrese el nombre del alumno: ");
+    scanf("%s", al->nombre); 
+    //estos scan y printf de toda la vida se utilizan para guardar la informacion en el char y eso luego en el archivo plano
+
+
+    printf("Ingrese la dirección del alumno: ");
+    scanf("%s", al->direccion);
+
+    printf("Ingrese la carrera del alumno: ");
+    scanf("%s", al->carrera);
+
+    printf("Ingrese la nota del alumno: ");
+    scanf("%f", &al->nota);
+}
+
