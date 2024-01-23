@@ -1,0 +1,13 @@
+
+#include <stdio.h>
+
+// esto define la estructura del alumno dandole datos relacionados con los nombres
+// segun yo funciana similar a un scanf pero esto seria mas para guardar en un archivo plano
+struct alumno {
+    int matricula;
+    char nombre[50];
+    char direccion[50];
+    char carrera[50];
+    float nota [50];
+};
+//supongo que iniciare con las funciones;
