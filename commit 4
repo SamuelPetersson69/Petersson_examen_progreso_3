@@ -1,0 +1,171 @@
+#include <stdio.h>
+#include <stdio.h>
+
+// Definición del struct alumno
+struct alumno {
+    int matricula;
+    char nombre[50];
+    char direccion[50];
+    char carrera[50];
+    float nota;
+};
+
+// Función para ingresar datos de un alumno en el archivo plano segun yo ahora a ver si la cague, simplemente meti una funcion y un monton de scanf y printf de toda la vida y ya explico lo demas 
+//por cierto los datos se guardan en char pero ya nada.
+void ingresarAlumno(struct alumno *al) {
+    printf("\nIngreso de datos del alumno:\n");
+
+    printf("Matrícula: ");
+    scanf("%d", &al->matricula);
+
+    printf("Nombre: ");
+    scanf("%s", al->nombre);
+
+    printf("Dirección: ");
+    scanf("%s", al->direccion);
+
+    printf("Carrera: ");
+    scanf("%s", al->carrera);
+
+    printf("Nota: ");
+    scanf("%f", &al->nota);
+}
+
++
+void imprimirAlumno(struct alumno al) {
+    printf("%d %s %s %s %.2f\n", al.matricula, al.nombre, al.direccion, al.carrera, al.nota);
+}
+
+int main() {
+    FILE *archivo;
+    struct alumno a;
+
+    // Abrir el archivo en modo escritura (sobrescribe el archivo si ya existe de plano)
+    archivo = fopen("alumnos.txt", "w");
+
+    if (archivo == NULL) {
+        printf("No se pudo abrir el archivo para escritura.\n");
+        return 1;
+    }
+
+    int cantidadAlumnos;
+
+    printf("Ingrese la cantidad de alumnos a ingresar: ");
+    scanf("%d", &cantidadAlumnos);
+
+    for (int i = 0; i < cantidadAlumnos; i++) {
+        ingresarAlumno(&a);
+
+        // Escribir los datos del alumno en el archivo
+        fprintf(archivo, "%d %s %s %s %.2f\n", a.matricula, a.nombre, a.direccion, a.carrera, a.nota);
+    }
+
+    // Cerrar el archivo después de escribir los dyos
+    fclose(archivo);
+
+    // Volver a abrir el archivo en modo lectura para que paragusrga
+    archivo = fopen("alumnos.txt", "r");
+
+    if (archivo == NULL) {
+        printf("No se pudo abrir el archivo para lectura.\n");
+        return 1;
+    }
+
+    // Imprimir los datos de los alumnos desde el archivo   las dtapobdzjk
+    printf("\nDatos de los alumnos:\n");
+    printf("Matrícula Nombre Dirección Carrera Nota\n");
+
+    // Leer datos del archivo hasta llegar al final con un eof 
+    while (fscanf(archivo, "%d %s %s %s %f", &a.matricula, a.nombre, a.direccion, a.carrera, &a.nota) != EOF) {
+        // Imprimir los datos del alumno
+        imprimirAlumno(a);
+    }
+
+    // Cierra rrar el archivo después de leer
+    fclose(archivo);
+
+    return 0;
+}
+
+struct alumno {
+    int matricula;
+    char nombre[50];
+    char direccion[50];
+    char carrera[50];
+    float nota;
+};
+
+void ingresarAlumno(struct alumno *al) {
+    printf("\nIngreso de datos del alumno:\n");
+
+    printf("Matrícula: ");
+    scanf("%d", &al->matricula);
+
+    printf("Nombre: ");
+    scanf("%s", al->nombre);
+
+    printf("Dirección: ");
+    scanf("%s", al->direccion);
+
+    printf("Carrera: ");
+    scanf("%s", al->carrera);
+
+    printf("Nota: ");
+    scanf("%f", &al->nota);
+}
+
+
+void imprimirAlumno(struct alumno al) {
+    printf("%d %s %s %s %.2f\n", al.matricula, al.nombre, al.direccion, al.carrera, al.nota);
+}
+
+int main() {
+    FILE *archivo;
+    struct alumno a;
+
+    // Abrir el archivo en modo escritura (sobrescribe el archivo si ya existe va a ser vastante util)
+    archivo = fopen("alumnos.txt", "w");
+
+    if (archivo == NULL) {
+        printf("No se pudo abrir el archivo para escritura.\n");
+        return 1;
+    }
+
+    int cantidadAlumnos;
+
+    printf("Ingrese la cantidad de alumnos a ingresar: ");
+    scanf("%d", &cantidadAlumnos);
+
+    for (int i = 0; i < cantidadAlumnos; i++) {
+        ingresarAlumno(&a);
+
+        // Escribir los datos del alumno en el archivo
+        fprintf(archivo, "%d %s %s %s %.2f\n", a.matricula, a.nombre, a.direccion, a.carrera, a.nota);
+    }
+
+    // Cerrar el archivo después de escribir
+    fclose(archivo);
+
+    // Volver a abrir el archivo en modo lectura
+    archivo = fopen("alumnos.txt", "r");
+
+    if (archivo == NULL) {
+        printf("No se pudo abrir el archivo para lectura.\n");
+        return 1;
+    }
+
+    // Imprimir los datos de los alumnos desde el archivo
+    printf("\nDatos de los alumnos:\n");
+    printf("Matrícula Nombre Dirección Carrera Nota\n");
+
+    // Leer datos del archivo hasta llegar al final (EOF)
+    while (fscanf(archivo, "%d %s %s %s %f", &a.matricula, a.nombre, a.direccion, a.carrera, &a.nota) != EOF) {
+        // Imprimir los datos del alumno
+        imprimirAlumno(a);
+    }
+
+    // Cerrar el archivo después de leer
+    fclose(archivo);
+
+    return 0;
+}
